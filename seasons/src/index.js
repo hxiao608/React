@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
 
 // const App = () => {
 // window.navigator.geolocation.getCurrentPosition(
@@ -14,21 +15,18 @@ class App extends React.Component {
   // first function to be called before anything else. Initialize state here
   constructor(props) {
     super(props);
-
     // initialize the state, the only time to direct assignment
     this.state = { lat: null, errorMessage: "" };
+  }
 
+  state = { lat: null, errorMessage: "" };
+
+  //call once
+  componentDidMount() {
     //only fetch once
     window.navigator.geolocation.getCurrentPosition(
-      //does not instantly occur when running constructor until some time in the future
-      /*setState*/
-      position => {
-        this.setState({ lat: position.coords.latitude }); //setState({key : value})
-        //don't use this.state.lat = position.coords.latitude
-      },
-      err => {
-        this.setState({ errorMessage: err.message });
-      } /* error callback */
+      position => this.setState({ lat: position.coords.latitude }), //setState({key : value})}
+      err => this.setState({ errorMessage: err.message })
     );
   }
 
@@ -38,7 +36,7 @@ class App extends React.Component {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     } else if (this.state.lat && !this.state.errorMessage) {
-      return <div>Latitude: {this.state.lat}</div>;
+      return <SeasonDisplay lat={this.state.lat} />;
     } else {
       return <div>Loading...</div>;
     }
