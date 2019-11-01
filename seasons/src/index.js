@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
 
 // const App = () => {
 // window.navigator.geolocation.getCurrentPosition(
@@ -23,16 +24,19 @@ class App extends React.Component {
     );
   }
 
-  // have to define render()
-  render() {
-    //how tox use the state
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     } else if (this.state.lat && !this.state.errorMessage) {
       return <SeasonDisplay lat={this.state.lat} />;
     } else {
-      return <div>Loading...</div>;
+      return <Loader message="Loading... please accept location request" />;
     }
+  }
+  // have to define render()
+  render() {
+    // use helper function
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
