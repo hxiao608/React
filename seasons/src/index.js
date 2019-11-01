@@ -12,13 +12,6 @@ import SeasonDisplay from "./SeasonDisplay";
 
 // class based component
 class App extends React.Component {
-  // first function to be called before anything else. Initialize state here
-  constructor(props) {
-    super(props);
-    // initialize the state, the only time to direct assignment
-    this.state = { lat: null, errorMessage: "" };
-  }
-
   state = { lat: null, errorMessage: "" };
 
   //call once
