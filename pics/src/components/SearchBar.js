@@ -12,7 +12,9 @@ class SearchBar extends React.Component {
   //prevent undefined 'this' error
   onFormSubmit = event => {
     event.preventDefault(); //prevent from submit the form and refresh the page
-    console.log(this.state.term); //undefined error8
+
+    //callback from the APP class
+    this.props.onSubmit(this.state.term); //make use of props inside a class based component (this.props)
   };
 
   render() {
