@@ -1,0 +1,10 @@
+.video-item {
+  /* style for video item */
+  display: flex !important; /* marked as important*/
+  align-items: center !important;
+  cursor: pointer; /*turn the cursor to the pointer icon*/
+}
+
+.video-item.item img {
+  max-width: 180px;
+}
