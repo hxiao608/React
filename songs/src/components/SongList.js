@@ -31,7 +31,7 @@ class SongList extends Component {
   }
 }
 
-//get data from the redux store
+//get data from the redux store, action
 const mapStateToProps = state => {
   //every time state change, this method get called
   // console.log(state);
